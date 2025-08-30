@@ -2,6 +2,10 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result;
+
+    if (!input || typeof input !== 'string') {
+      return null; // Return null for invalid or empty input
+    }
     
     const numRegex = /^[\d.\/]+/;
     const match = input.match(numRegex);
@@ -38,6 +42,10 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     let result;
+
+    if (!input || typeof input !== 'string') {
+      return null; // Return null for invalid or empty input
+    }
 
     console.log("ConvertHandler: " + input);
     const unitRegex = /[a-zA-Z]+$/;
@@ -114,6 +122,9 @@ function ConvertHandler() {
     } else if (initUnit === 'km') {
       result = initNum / miToKm;
     }
+
+    // Round the result to 5 decimal places
+    result = Math.round(result * 100000) / 100000;
     
     return result;
   };
